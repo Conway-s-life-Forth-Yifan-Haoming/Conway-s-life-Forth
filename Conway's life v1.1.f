@@ -175,6 +175,7 @@ SWITCH]
   NOLC1
   NOB
   NOD
+  3000 ms
  ;
 
 : Text-Test2             { Simple time limited test routine }
@@ -182,6 +183,7 @@ SWITCH]
   NOLC2
   NOB
   NOD
+  3000ms
  ;
 
 
@@ -661,23 +663,27 @@ CR
 Text-Test2
 ;
 
-: 3_GENERATIONS
-START-TEXT-WINDOW
-RND_FILL_LA1
-SHOW_LA1
-CR
+: generation_loop 
+begin 
 NEW_GENERATION1
 SHOW_LA2
 CR
 NEW_GENERATION2
 SHOW_LA1
 CR
-NEW_GENERATION1
-SHOW_LA2
+again 
+;
+
+
+: 3_GENERATIONS
+START-TEXT-WINDOW
+RND_FILL_LA1
+SHOW_LA1
+CR
+GENERATION_LOOP
 CR
 ;
 
 
 
-3_generations
-
+3_GENERATIONS
